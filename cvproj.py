@@ -12,7 +12,7 @@ cap = cv2.VideoCapture(1)
 
 hands = mp_hands.Hands(min_detection_confidence=0.7, min_tracking_confidence=0.7)
 
-# Flag to track dragging
+
 dragging = False
 
 def distance(p1, p2):
@@ -36,7 +36,7 @@ while cap.isOpened():
             hand_type = handedness.classification[0].label
             landmarks = hand_landmarks.landmark
 
-            # Get important landmarks
+            
             x_index = int(landmarks[8].x * image.shape[1])
             y_index = int(landmarks[8].y * image.shape[0])
 
@@ -50,7 +50,7 @@ while cap.isOpened():
             dist_middle_thumb = distance((x_middle, y_middle), (x_thumb, y_thumb))
 
             if hand_type == "Right":
-                # Cursor move
+               
                 screen_x = int(landmarks[8].x * screen_width)
                 screen_y = int(landmarks[8].y * screen_height)
                 pyautogui.moveTo(screen_x, screen_y)
